@@ -9,8 +9,10 @@ router.get('/', async (req, res) => {
     if (req.query.name != null && req.query.name !== '') {
         searchOptions.name = new RegExp(req.query.name, 'i')
     }
+    // console.log(req.query.name)
     try {
         const authors = await Author.find(searchOptions)
+        // console.log(authors)
         res.render('authors/index', {
             authors: authors,
             searchOptions: req.query
@@ -18,6 +20,7 @@ router.get('/', async (req, res) => {
     } catch (error) {
         res.redirect('/')
     }
+
 
 })
 

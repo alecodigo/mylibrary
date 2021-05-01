@@ -12,6 +12,7 @@ const bodyParser = require('body-parser')
 //routers
 const indexRouter = require('./routers/index')
 const authorRouter = require('./routers/authors')
+const booksRouter = require('./routers/books')
 
 app.set('view engine', 'ejs')
 app.set('views', __dirname + '/views')
@@ -33,5 +34,6 @@ mongoose.connect(uri,  {useNewUrlParser: true, useUnifiedTopology: true})
 // le decimos a node que use estos routers
 app.use('/', indexRouter)
 app.use('/authors', authorRouter)
+app.use('/books', booksRouter)
 
 app.listen(process.env.PORT || 3000)
